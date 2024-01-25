@@ -24,36 +24,36 @@ function App() {
 
 
   return (
-<>
-  <div>
-    {students.length > 0 ? (
-      <table border={1} width={'100%'}>
-        <thead>
-          <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Age</th>
-            <th>Email</th>
-            <th>Phone</th>
-          </tr>
-        </thead>
-        <tbody>
-          {students.map((student, index) => (
-            <tr key={index}>
-              <td>{index + 1}</td>
-              <td>{student.name}</td>
-              <td>{student.age}</td>
-              <td>{student.email}</td>
-              <td>{student.phone}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    ) : (
-      <div>No records found</div>
-    )}
-  </div>
-</>
+    <>
+      <div>
+        {students.length > 0 ? (
+          <table border={1} width={'100%'}>
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Email</th>
+                <th>Phone</th>
+              </tr>
+            </thead>
+            <tbody>
+              {students.map((student, index) => (
+                <tr key={index}>
+                  <td>{index + 1}</td>
+                  <td>{student.name}</td>
+                  <td>{student.age}</td>
+                  <td>{student.email}</td>
+                  <td>{student.phone}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        ) : (
+          <div>{error}</div>
+        )}
+      </div>
+    </>
 
   )
 }
