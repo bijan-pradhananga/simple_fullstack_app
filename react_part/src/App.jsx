@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react"
 import axios from 'axios';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrash,faPenToSquare } from '@fortawesome/free-solid-svg-icons'
 
 function App() {
   const [students, setStudents] = useState([]);
@@ -25,34 +27,47 @@ function App() {
 
   return (
     <>
-      <div>
-        {students.length > 0 ? (
-          <table border={1} width={'100%'}>
-            <thead>
-              <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Age</th>
-                <th>Email</th>
-                <th>Phone</th>
-              </tr>
-            </thead>
-            <tbody>
-              {students.map((student, index) => (
-                <tr key={index}>
-                  <td>{index + 1}</td>
-                  <td>{student.name}</td>
-                  <td>{student.age}</td>
-                  <td>{student.email}</td>
-                  <td>{student.phone}</td>
+      <div className="container">
+        
+          {students.length > 0 ? (
+            <table className="table" border={1} width={'100%'}>
+              <thead className="thead-light">
+                <tr>
+                  <th scope="col">Id</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Age</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Phone</th>
+                  <th scope="col" colSpan={2}>Action</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        ) : (
-          <div>{error}</div>
-        )}
-      </div>
+              </thead>
+              <tbody>
+                {students.map((student, index) => (
+                  <tr key={index}>
+                    <td scope="row">{index + 1}</td>
+                    <td>{student.name}</td>
+                    <td>{student.age}</td>
+                    <td>{student.email}</td>
+                    <td>{student.phone}</td>
+                    <td>
+                        <button type="button" class="btn btn-danger">
+                          <FontAwesomeIcon icon={faTrash} />
+                        </button>
+                    </td>
+                    <td>
+                      <button type="button" class="btn btn-success">
+                          <FontAwesomeIcon icon={faPenToSquare} />
+                        </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          ) : (
+            <div>{error}</div>
+          )}
+        </div>
+
     </>
 
   )
