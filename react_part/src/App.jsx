@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import axios from 'axios';
 import StudentForm from "./components/StudentForm";
 import StudentInfo from "./components/StudentInfo";
+import NavBar from "./components/NavBar";
 
 function App() {
   const [students, setStudents] = useState([]);
@@ -57,6 +58,9 @@ function App() {
   return (
     <>
       <div className="container-fluid">
+        <div className="row">
+            <NavBar />
+        </div>
         <div className="row">
           <div className="col-4">
             <StudentForm addData={addData} />
