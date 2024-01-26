@@ -2,7 +2,7 @@ import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash, faPenToSquare } from '@fortawesome/free-solid-svg-icons'
 
-export default function StudentInfo({students,error}) {
+export default function StudentInfo({students,error,deleteData}) {
   return (
     <>  
         <h1 className="m-2">Student List</h1>
@@ -20,14 +20,14 @@ export default function StudentInfo({students,error}) {
             </thead>
             <tbody>
               {students.map((student, index) => (
-                <tr key={index}>
+                <tr key={student.id}>
                   <td scope="row">{index + 1}</td>
                   <td>{student.name}</td>
                   <td>{student.age}</td>
                   <td>{student.email}</td>
                   <td>{student.phone}</td>
                   <td >
-                    <button type="button" className="btn btn-danger m-1">
+                    <button type="button" onClick={()=>{deleteData(student.id)}} className="btn btn-danger m-1">
                       <FontAwesomeIcon icon={faTrash} />
                     </button>
                     <button type="button" className="btn btn-success m-1">

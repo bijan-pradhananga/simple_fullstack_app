@@ -23,14 +23,30 @@ function App() {
   //adding data to server
   const addData = async (formData) => {
     try {
-      const response = await axios.post('http://127.0.0.1:8000/api/students',formData);
+      const response = await axios.post('http://127.0.0.1:8000/api/students', formData);
       if (response.status === 200) {
         fetchData();
-      } 
+      }
       alert(response.data.message);
     } catch (error) {
       setError('Error occured while adding data')
     }
+  }
+
+  //delete data from the server
+  const deleteData = async (id) => {
+    let isConfirmed = window.confirm('Are you sure you want to delete?');
+    if (isConfirmed) {
+      try {
+        const response = await axios.delete(`http://127.0.0.1:8000/api/students/${id}/delete`);
+        if (response.status === 200) {
+          fetchData();
+        }
+        alert(response.data.message);
+      } catch (error) {
+        setError('Error occured while deleting data')
+      }
+    } 
   }
 
   //calling the fetch function
@@ -41,8 +57,8 @@ function App() {
   return (
     <>
       <div className="container">
-        <StudentForm addData={addData}/>
-        <StudentInfo students={students} error={error}/>
+        <StudentForm addData={addData} />
+        <StudentInfo students={students} error={error} deleteData={deleteData} />
       </div>
     </>
 
