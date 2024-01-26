@@ -46,7 +46,7 @@ function App() {
       } catch (error) {
         setError('Error occured while deleting data')
       }
-    } 
+    }
   }
 
   //calling the fetch function
@@ -56,9 +56,15 @@ function App() {
 
   return (
     <>
-      <div className="container">
-        <StudentForm addData={addData} />
-        <StudentInfo students={students} error={error} deleteData={deleteData} />
+      <div className="container-fluid">
+        <div className="row">
+          <div className="col-4">
+            <StudentForm addData={addData} />
+          </div>
+          <div className="col-8">
+            <StudentInfo students={students} error={error} deleteData={deleteData} />
+          </div>
+        </div>
       </div>
     </>
 
