@@ -1,6 +1,7 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash, faPenToSquare } from '@fortawesome/free-solid-svg-icons'
+import { Link } from 'react-router-dom'
 
 export default function StudentInfo({students,error,deleteData}) {
   return (
@@ -30,9 +31,11 @@ export default function StudentInfo({students,error,deleteData}) {
                     <button type="button" onClick={()=>{deleteData(student.id)}} className="btn btn-danger m-1">
                       <FontAwesomeIcon icon={faTrash} />
                     </button>
+                    <Link to={`/student/${student.id}`}>                 
                     <button type="button" className="btn btn-success m-1">
-                      <FontAwesomeIcon icon={faPenToSquare} />
+                        <FontAwesomeIcon icon={faPenToSquare} />
                     </button>
+                    </Link>
                   </td>
                 </tr>
               ))}
