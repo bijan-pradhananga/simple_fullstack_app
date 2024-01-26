@@ -30,7 +30,7 @@ export default function Home() {
         }
         alert(response.data.message);
       } catch (error) {
-        setError('Error occured while adding data')
+        console.log(error)
       }
     }
   
